@@ -1,0 +1,6 @@
+{
+  "databaseURL": "https://courses-ue460p.us-east-1.xata.sh/db/pos-graduacoes",
+  "codegen": {
+    "output": "src/xata.ts"
+  }
+}

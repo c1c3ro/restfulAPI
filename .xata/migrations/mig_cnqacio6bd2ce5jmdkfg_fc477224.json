@@ -1,0 +1,16 @@
+{
+  "id": "mig_cnqacio6bd2ce5jmdkfg",
+  "parentID": "mig_cnqac9o6bd2ce5jmdkeg",
+  "checksum": "1:fc4772243daeec96f3073b69fcbf95a41a997932b2cab3d79e9b322590007857",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "horas-teorica",
+          "type": "text"
+        },
+        "table": "courses"
+      }
+    }
+  ]
+}

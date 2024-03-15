@@ -1,0 +1,1 @@
+##### A simple restful API using Astro and Xata, it was really cool to play with and understand the dynamics of this.

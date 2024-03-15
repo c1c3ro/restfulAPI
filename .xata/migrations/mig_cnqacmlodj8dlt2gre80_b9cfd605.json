@@ -1,0 +1,16 @@
+{
+  "id": "mig_cnqacmlodj8dlt2gre80",
+  "parentID": "mig_cnqacio6bd2ce5jmdkfg",
+  "checksum": "1:b9cfd605349cb2bb4609f6c11b89ed460cfcb39e816937a422836941568f762f",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "horas-pratica",
+          "type": "text"
+        },
+        "table": "courses"
+      }
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "id": "mig_cnqac9o6bd2ce5jmdkeg",
+  "parentID": "mig_cnqabvg6bd2ce5jmdkdg",
+  "checksum": "1:83aa5c5d671b22eace2e25fe62ae6f2771401ba5a9cd65600684f18985d520ed",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "titulo",
+          "type": "text",
+          "notNull": true,
+          "defaultValue": "Curso de Pós Graduação"
+        },
+        "table": "courses"
+      }
+    }
+  ]
+}
