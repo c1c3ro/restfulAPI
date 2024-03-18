@@ -1,0 +1,18 @@
+{
+  "id": "mig_cns8kfo6bd2ce5jme8ag",
+  "parentID": "mig_cns8k1lodj8dlt2gs03g",
+  "checksum": "1:fdfe79a577905b81fd6d5902abcc0dac12dc9de7c48fd7734edd398d4f98c723",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "nome",
+          "type": "string",
+          "notNull": true,
+          "defaultValue": "Nome completo"
+        },
+        "table": "contato-inicial"
+      }
+    }
+  ]
+}

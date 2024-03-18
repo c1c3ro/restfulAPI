@@ -8,16 +8,28 @@ import type {
 
 const tables = [
   {
-    name: "courses",
+    name: "contato-inicial",
     columns: [
       {
-        name: "titulo",
+        name: "nome",
+        type: "string",
+        notNull: true,
+        defaultValue: "Nome completo",
+      },
+      {
+        name: "email",
+        type: "email",
+        notNull: true,
+        defaultValue: "Email@provedor.com",
+      },
+      { name: "telefone", type: "string" },
+      { name: "assunto", type: "string" },
+      {
+        name: "mensagem",
         type: "text",
         notNull: true,
-        defaultValue: "Curso de Pós Graduação",
+        defaultValue: "Mensagem do usuário",
       },
-      { name: "horas-teorica", type: "text" },
-      { name: "horas-pratica", type: "text" },
     ],
   },
 ] as const;
@@ -25,17 +37,17 @@ const tables = [
 export type SchemaTables = typeof tables;
 export type InferredTypes = SchemaInference<SchemaTables>;
 
-export type Courses = InferredTypes["courses"];
-export type CoursesRecord = Courses & XataRecord;
+export type ContatoInicial = InferredTypes["contato-inicial"];
+export type ContatoInicialRecord = ContatoInicial & XataRecord;
 
 export type DatabaseSchema = {
-  courses: CoursesRecord;
+  "contato-inicial": ContatoInicialRecord;
 };
 
 const DatabaseClient = buildClient();
 
 const defaultOptions = {
-  databaseURL: "https://courses-ue460p.us-east-1.xata.sh/db/pos-graduacoes",
+  databaseURL: "https://nad-ue460p.us-east-1.xata.sh/db/contato",
 };
 
 export class XataClient extends DatabaseClient<DatabaseSchema> {

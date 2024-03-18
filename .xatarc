@@ -1,5 +1,5 @@
 {
-  "databaseURL": "https://courses-ue460p.us-east-1.xata.sh/db/pos-graduacoes",
+  "databaseURL": "https://nad-ue460p.us-east-1.xata.sh/db/contato",
   "codegen": {
     "output": "src/xata.ts"
   }

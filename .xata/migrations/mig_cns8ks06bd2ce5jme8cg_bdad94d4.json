@@ -1,0 +1,16 @@
+{
+  "id": "mig_cns8ks06bd2ce5jme8cg",
+  "parentID": "mig_cns8km06bd2ce5jme8bg",
+  "checksum": "1:bdad94d465fb88a80c09ae25c89711abf6e8c0a42ff4138dc9995ea3cf9b77d8",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "telefone",
+          "type": "string"
+        },
+        "table": "contato-inicial"
+      }
+    }
+  ]
+}
