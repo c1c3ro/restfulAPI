@@ -43,12 +43,12 @@ import Card from '../components/Card.astro';
 	
 	form.addEventListener("submit", ajaxpost);
 
-	function ajaxpost(event) {
+	function ajaxpost(event: Event) {
 		event.preventDefault();
 
 		var data = new FormData(form);
 
-		var dataJson = {}
+		var dataJson: any = {}
 		data.forEach((value, key) => dataJson[key] = value);
 		var json = JSON.stringify(dataJson);
 
