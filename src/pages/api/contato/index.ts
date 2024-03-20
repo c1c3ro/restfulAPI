@@ -33,7 +33,8 @@ export const POST: APIRoute = async ({ request }) => {
           return new Response(JSON.stringify(createdCourse), {
               status: 200,
               headers: {
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
+                "Access-Control-Allow-Origin": "*"
               }
             });
 
@@ -42,7 +43,8 @@ export const POST: APIRoute = async ({ request }) => {
           return new Response(JSON.stringify({msg: "ERROR"}), {
               status: 400,
               headers: {
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
+                "Access-Control-Allow-Origin": "*"
               }
             });
       }
