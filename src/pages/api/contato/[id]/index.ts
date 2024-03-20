@@ -16,7 +16,7 @@ try {
 
     if (!id) throw new Error("ID is Required");
     
-    const updatedCourse = await client.db.courses.update(id, body)
+    const updatedCourse = await client.db["contato-inicial"].update(id, body)
 
     return new Response(JSON.stringify(updatedCourse), {
         status: 200,
@@ -46,7 +46,7 @@ export const DELETE: APIRoute = async ({ params, request }) => {
 
         if (!id) throw new Error("ID is Required");
         
-        const deletedCourse = await client.db.courses.delete(id)
+        const deletedCourse = await client.db["contato-inicial"].delete(id)
 
         return new Response(JSON.stringify(deletedCourse), {
             status: 200,

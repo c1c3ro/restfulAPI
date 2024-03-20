@@ -37,7 +37,7 @@ import Card from '../components/Card.astro';
 
 <script>
 
-	var form = document.getElementById("contact");
+	var form: HTMLElement = document.getElementById("contact");
 
 	if (!form) throw new Error("Formulário não existe!");
 	
@@ -46,7 +46,7 @@ import Card from '../components/Card.astro';
 	function ajaxpost(event: Event) {
 		event.preventDefault();
 
-		var data = new FormData(form);
+		var data = new FormData(form as HTMLFormElement);
 
 		var dataJson: any = {}
 		data.forEach((value, key) => dataJson[key] = value);
