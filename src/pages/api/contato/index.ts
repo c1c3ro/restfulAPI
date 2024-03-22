@@ -34,7 +34,7 @@ export const POST: APIRoute = async ({ request }) => {
               status: 200,
               headers: {
                 "Content-Type": "application/json",
-                "Access-Control-Allow-Origin": "*"
+                "Access-Control-Allow-Origin": "https://nad-edu-git-urgencia-novo-nads-projects-178161a5.vercel.app/"
               }
             });
 
