@@ -1,14 +1,16 @@
 import { defineConfig } from 'astro/config';
 
-import vercel from "@astrojs/vercel/serverless";
+import node from "@astrojs/node";
 
 // https://astro.build/config
 export default defineConfig({
   output: 'server',
   server: {
     headers: {
-        "Access-Control-Allow-Origin": "https://nad-edu-git-urgencia-novo-nads-projects-178161a5.vercel.app/"
+      "Access-Control-Allow-Origin": "*"
     }
   },
-  adapter: vercel()
+  adapter: node({
+    mode: "standalone"
+  })
 });

@@ -32,6 +32,19 @@ const tables = [
       },
     ],
   },
+  {
+    name: "inscritos",
+    columns: [
+      { name: "Data", type: "datetime" },
+      { name: "Nome", type: "string" },
+      { name: "CPF", type: "string" },
+      { name: "Email", type: "string" },
+      { name: "Telefone", type: "string" },
+      { name: "area", type: "text" },
+      { name: "WorkshopSexta", type: "string" },
+      { name: "WorkshopDomingo", type: "string" },
+    ],
+  },
 ] as const;
 
 export type SchemaTables = typeof tables;
@@ -40,8 +53,12 @@ export type InferredTypes = SchemaInference<SchemaTables>;
 export type ContatoInicial = InferredTypes["contato-inicial"];
 export type ContatoInicialRecord = ContatoInicial & XataRecord;
 
+export type Inscritos = InferredTypes["inscritos"];
+export type InscritosRecord = Inscritos & XataRecord;
+
 export type DatabaseSchema = {
   "contato-inicial": ContatoInicialRecord;
+  inscritos: InscritosRecord;
 };
 
 const DatabaseClient = buildClient();
