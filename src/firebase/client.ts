@@ -1,13 +1,13 @@
 import { initializeApp } from "firebase/app";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyBIimn3Cpz45YRHgQRrspXEHffFkrRq0Y4",
-  authDomain: "restful-api-33466.firebaseapp.com",
-  projectId: "restful-api-33466",
-  storageBucket: "restful-api-33466.appspot.com",
-  messagingSenderId: "326349219885",
-  appId: "1:326349219885:web:75d19682b07e70a1dc30a4",
-  measurementId: "G-XTJG40QJHV"
+  apiKey: import.meta.env.APIKEY,
+  authDomain: import.meta.env.AUTHDOMAIN,
+  projectId: import.meta.env.PROJECTID,
+  storageBucket: import.meta.env.STORAGEBUCKET,
+  messagingSenderId: import.meta.env.MESSAGINGSENDERID,
+  appId: import.meta.env.APPID,
+  measurementId: import.meta.env.MEASUREMENTID
 };
 
 export const app = initializeApp(firebaseConfig);
