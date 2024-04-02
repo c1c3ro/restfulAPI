@@ -1,5 +1,7 @@
 import type { APIRoute } from "astro";
 import { XataClient } from "../../../xata";
+import { app } from "../../../firebase/server";
+import { getFirestore } from "firebase-admin/firestore";
 
 const client = new XataClient({
     apiKey: import.meta.env.XATA_API_KEY,
@@ -28,9 +30,15 @@ export const POST: APIRoute = async ({ request }) => {
       try {
 
           const body = await request.json();
-          const createdCourse = await client.db["contato-inicial"].create(body);
+          const dataAtual = new Date();
+          const dataHora = dataAtual.toLocaleString('pt-BR');
+          // const createdCourse = await client.db["contato-inicial"].create(body);
 
-          return new Response(JSON.stringify(createdCourse), {
+          const db = getFirestore(app);
+          const friendsRef = db.collection("contato");
+          await friendsRef.add({dataHora, ...body});
+
+          return new Response(JSON.stringify({message: "success I guess"}), {
               status: 200,
               headers: {
                 "Content-Type": "application/json",

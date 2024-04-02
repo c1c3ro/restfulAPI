@@ -55,7 +55,7 @@ import Card from '../components/Card.astro';
 
 		console.log(data.get("nome"));
 		
-		fetch("https://restful-api-33466.web.app/api/contato",
+		fetch(window.location.protocol + "//" + window.location.host + "/api/contato",
 		{ method:"POST", body: json, headers: {"Content-Type": "application/json"} })
 		.then(res => res.json())
 		.then(response => {
