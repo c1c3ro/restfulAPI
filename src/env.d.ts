@@ -2,6 +2,7 @@
 interface ImportMetaEnv {
     readonly XATA_API_KEY: string;
     readonly XATA_BRANCH: string;
+    readonly MY_PASSWORD: string;
     readonly F_PRIVATE_KEY_ID: string;
     readonly F_PRIVATE_KEY: string;
     readonly F_PROJECT_ID: string;
