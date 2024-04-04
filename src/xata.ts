@@ -8,41 +8,10 @@ import type {
 
 const tables = [
   {
-    name: "contato-inicial",
+    name: "expense",
     columns: [
-      {
-        name: "nome",
-        type: "string",
-        notNull: true,
-        defaultValue: "Nome completo",
-      },
-      {
-        name: "email",
-        type: "email",
-        notNull: true,
-        defaultValue: "Email@provedor.com",
-      },
-      { name: "telefone", type: "string" },
-      { name: "assunto", type: "string" },
-      {
-        name: "mensagem",
-        type: "text",
-        notNull: true,
-        defaultValue: "Mensagem do usuário",
-      },
-    ],
-  },
-  {
-    name: "inscritos",
-    columns: [
-      { name: "Data", type: "datetime" },
-      { name: "Nome", type: "string" },
-      { name: "CPF", type: "string" },
-      { name: "Email", type: "string" },
-      { name: "Telefone", type: "string" },
-      { name: "area", type: "text" },
-      { name: "WorkshopSexta", type: "string" },
-      { name: "WorkshopDomingo", type: "string" },
+      { name: "category", type: "string" },
+      { name: "price", type: "float", notNull: true, defaultValue: "1" },
     ],
   },
 ] as const;
@@ -50,21 +19,18 @@ const tables = [
 export type SchemaTables = typeof tables;
 export type InferredTypes = SchemaInference<SchemaTables>;
 
-export type ContatoInicial = InferredTypes["contato-inicial"];
-export type ContatoInicialRecord = ContatoInicial & XataRecord;
-
-export type Inscritos = InferredTypes["inscritos"];
-export type InscritosRecord = Inscritos & XataRecord;
+export type Expense = InferredTypes["expense"];
+export type ExpenseRecord = Expense & XataRecord;
 
 export type DatabaseSchema = {
-  "contato-inicial": ContatoInicialRecord;
-  inscritos: InscritosRecord;
+  expense: ExpenseRecord;
 };
 
 const DatabaseClient = buildClient();
 
 const defaultOptions = {
-  databaseURL: "https://nad-ue460p.us-east-1.xata.sh/db/contato",
+  databaseURL:
+    "https://C-cero-Jos-s-workspace-8fhvh2.us-east-1.xata.sh/db/c1c3ro",
 };
 
 export class XataClient extends DatabaseClient<DatabaseSchema> {

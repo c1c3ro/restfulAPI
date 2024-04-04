@@ -1,0 +1,18 @@
+{
+  "id": "mig_co7fvdcfiil5rc1uc7sg",
+  "parentID": "mig_co7fv3pue7a71jh4g7og",
+  "checksum": "1:7cc57cd3d8427a9abe9568fcc36ba51cae29f575c800e4130f09890a53cccd58",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "price",
+          "type": "float",
+          "notNull": true,
+          "defaultValue": "1"
+        },
+        "table": "expense"
+      }
+    }
+  ]
+}

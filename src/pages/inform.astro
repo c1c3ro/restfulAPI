@@ -17,8 +17,6 @@ if (!authenticated)
 
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="icon" href="https://www.nad-edu.com.br/_astro/icon-192.e0b72ef9.webp" sizes="192x192">
-
 
         <!-- <meta property="og:image" content={SITE_URL + ogImage}>
         <link rel="icon" href={icon} sizes="192x192"> -->
@@ -26,36 +24,64 @@ if (!authenticated)
 		<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
         
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-        <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
-		<title>Gere seu QR code para o congresso</title>
+        
+		<title>Expense Tracker</title>
 
 	</head>
 	<body>
 
         <div class="d-flex justify-content-center align-items-center py-5">
             <div class="container-fluid">
-                <div class="row justify-content-center align-items-center mt-5">
+                <div class="row justify-content-center align-items-center mt-2">
                     <div class="col-12 col-sm-6 col-lg-4 mx-auto text-start mt-2 mt-md-0">
 
-                        <div class="text-center">
-                            <p class="error-text text-danger fw-semibold mb-4 visually-hidden" style="font-size: 16px;"> CPF não está na lista de inscritos! </p>
+                        <div class="head-title text-center text-sm-start">
+                            <p class="fw-bold mb-5" style="font-size: 30px;"> Expense Tracker </p>
                         </div>
 
-                        <div class="text-center">
-                            <p class="error-text text-danger fw-semibold mb-4" style="font-size: 16px;"> Informe seus gastos: </p>
+                        <div class="isthatyou text-center text-sm-start">
+                            <p class="fw-semibold mb-4" style="font-size: 18px;"> Informe seus gastos: </p>
                         </div>
 
-                        <form id="cpf">
+                        <form id="expense">
                             <div class="col-12 col-md-10 mb-3">
-                                <label for="exampleFormControlInput3" class="form-label fw-bold">Senha: <span class="text-danger">*</span></label>
-                                <input name="pass" type="password" class="form-control" id="exampleFormControlInput3" required>
-                                <div id="cpfHelp" class="form-text fw-medium">Digite apenas números.</div>
-                                <div id="cpfInvalido" class="form-text text-danger fw-semibold visually-hidden" style="font-size: 12px;">CPF inválido, todos os dígitos estão corretos?</div>
+                                <label for="selectCategory" class="form-label fw-bold">Qual categoria? <span class="text-danger">*</span></label>
+                                <select 
+                                id="select"
+                                name="selectCategory"
+                                class="form-select" 
+                                onchange="typeAnotherCategory(this)" 
+                                aria-label="Default select example"
+                                required>
+                                    <option selected>Selecione</option>
+                                    <option value="1">Comida e/ou bebida</option>
+                                    <option value="2">Utensílios de limpeza</option>
+                                    <option value="2">Uber</option>
+                                    <option value="2">Roupas</option>
+                                    <option value="2">Acessórios pessoais</option>
+                                    <option value="2">Cinema</option>
+                                    <option value="2">Academia</option>
+                                    <option value="2">Terapia</option>
+                                    <option value="2">Internet</option>
+                                    <option value="2">Aluguel</option>
+                                    <option value="2">Acessórios de tecnologia</option>
+                                    <option value="2">Ônibus</option>
+                                    <option value="2">Maconha</option>
+                                    <option value="3">Utensílios para casa</option>
+                                    <option value="outro">Adicionar categoria</option>
+                                </select>
+                                <label for="outro" id="outraCatergoriaLabel" class="form-label fw-bold mt-3" style="display: none">Adicione a nova categoria: <span class="text-danger">*</span></label>
+                                <input name="outro" type="text" class="form-control" style="display: none" id="outraCatergoria">
+                            </div>
+                            <div class="col-12 col-md-10 mb-3">
+                                <label for="exampleFormControlInput3" class="form-label fw-bold">Informe o preço: <span class="text-danger">*</span></label>
+                                <input name="pass" type="number" step="0.01" class="form-control" id="exampleFormControlInput3" required>
+                                <div id="senhaIncorreta" class="form-text text-danger fw-semibold visually-hidden" style="font-size: 12px;">Senha incorreta!</div>
                             </div>
                             <span class="load-spinner loader me-2 visually-hidden" aria-hidden="true"></span>
                             <button type="submit" class="btn btn-dark btn-form py-2 px-3">
-                                <span class="button-text" role="status">Enviar</span>
-                                <span class="visually-hidden load-text" role="status">Consultando...</span>
+                                <span class="button-text fw-semibold" role="status">Enviar</span>
+                                <span class="visually-hidden load-text fw-semibold" role="status">Consultando...</span>
                             </button>
                         </form>
                         
@@ -63,10 +89,35 @@ if (!authenticated)
                 </div>
             </div>
         </div>
+
+        <script is:inline>
+            function typeAnotherCategory(that) {
+                if (that.value == "outro") {
+                    document.getElementById("outraCatergoriaLabel").style.display = "block";
+                    document.getElementById("outraCatergoria").style.display = "block";
+                } else {
+                    document.getElementById("outraCatergoriaLabel").style.display = "none";
+                    document.getElementById("outraCatergoria").style.display = "none";
+                }
+            }
+        </script>
         
         <script>
+
+			function makeid(length) {
+				let result = '';
+				const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+				const charactersLength = characters.length;
+				let counter = 0;
+				while (counter < length) {
+					result += characters.charAt(Math.floor(Math.random() * charactersLength));
+					counter += 1;
+				}
+				return result;
+			}
+
             window.onload = () => {
-                const form = document.getElementById("cpf") as HTMLFormElement;
+                const form = document.getElementById("expense") as HTMLFormElement;
 
                 form.addEventListener('submit',	handleSubmit);
 
@@ -82,28 +133,37 @@ if (!authenticated)
 
 					var data = new FormData(form);
 
+                    var object = {};
+                    data.forEach(function(value, key){
+                        object[key] = value;
+                    });
+
+                    var select = document.getElementById("select") as HTMLSelectElement;
+                    const selectedText = select.options[select.selectedIndex].text;
+
+                    console.log(object)
+                    console.log(selectedText)
+
 					fetch(window.location.protocol + "//" + window.location.host + "/api/login", 
                     { method:"POST", body:JSON.stringify({pass: data.get("pass")}), headers: {"Content-Type": "application/json"}})
                     .then(res => res.json())
                     .then(response => {
 						console.log(response.message)
+						if (response.message == "success") {
+							window.location.href = window.location.protocol + "//" + window.location.host + `/inform?sessionid=${makeid(100)}&sessionduration=${makeid(100)}&pass=${data.get("pass")}&passcodec=${makeid(100)}`;
+						} else {
+                            showMessage();
+                        }
 					});
 				}
 
-                // function showMessage(success) {
-                    
-                //     if (success) { handleSuccess(form) }
-
-                //     else { 
-                //         toggleLoad(form);
-                //         form.querySelector("#cpfHelp").classList.toggle("visually-hidden");
-                //         form.querySelector("#cpfInvalido").classList.toggle("visually-hidden");
-                //         setTimeout(() => {
-                //             form.querySelector("#cpfHelp").classList.toggle("visually-hidden");
-                //             form.querySelector("#cpfInvalido").classList.toggle("visually-hidden");
-                //         }, 7000);
-                //     }
-                // }
+                function showMessage() {
+                    toggleLoad(form);
+                    form.querySelector("#senhaIncorreta").classList.toggle("visually-hidden");
+                    setTimeout(() => {
+                        form.querySelector("#senhaIncorreta").classList.toggle("visually-hidden");
+                    }, 7000);
+                }
 			};
 
                 
@@ -113,6 +173,8 @@ if (!authenticated)
 
             body {
                 font-family: Montserrat, sans-serif;
+                background-color: #1d040d;
+                color: #e0ffc7;
             }
 
             #navbar-logo {
@@ -129,19 +191,7 @@ if (!authenticated)
                 height: 17px;
                 animation: spin 1s linear infinite;
             }
-        
-            .success-message, .fail-message {
-                padding: 20px;
-                font-weight: 500;
-                font-size: 15px;
-                background: #e0ffc7;
-                border: 1px solid #b4d39b;
-            }
-        
-            .fail-message {
-                background: #ffd7c7;
-                border: 1px solid #d39b9b;
-            }
+    
 
             @keyframes spin {
                 0% { transform: rotate(0deg); }

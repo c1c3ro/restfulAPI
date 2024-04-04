@@ -1,5 +1,5 @@
 {
-  "databaseURL": "https://nad-ue460p.us-east-1.xata.sh/db/contato",
+  "databaseURL": "https://C-cero-Jos-s-workspace-8fhvh2.us-east-1.xata.sh/db/c1c3ro",
   "codegen": {
     "output": "src/xata.ts"
   }
