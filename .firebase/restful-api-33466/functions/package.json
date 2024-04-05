@@ -1,10 +1,21 @@
 {
-  "main": "server.js",
+  "name": "restfulapi",
+  "type": "module",
+  "version": "0.0.1",
   "dependencies": {
+    "@astrojs/check": "^0.5.9",
+    "@astrojs/node": "^8.2.5",
+    "@astrojs/vercel": "^7.4.0",
+    "@xata.io/client": "^0.29.3",
+    "astro": "^4.5.4",
+    "firebase": "^10.6.0",
+    "firebase-admin": "^12.0.0",
+    "firebase-tools": "^13.6.1",
+    "typescript": "^5.4.2",
     "firebase-frameworks": "^0.11.0",
-    "firebase-functions": "^4.5.0",
-    "firebase-admin": "^11.11.1"
+    "firebase-functions": "^4.5.0"
   },
+  "main": "server.js",
   "engines": {
     "node": "18"
   }

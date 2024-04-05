@@ -99,24 +99,9 @@ const categories = await client.db.categories.getAll();
                     document.getElementById("outraCatergoria").style.display = "none";
                 }
             }
-        </script>
-        
-        <script>
-
-			function makeid(length) {
-				let result = '';
-				const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-				const charactersLength = characters.length;
-				let counter = 0;
-				while (counter < length) {
-					result += characters.charAt(Math.floor(Math.random() * charactersLength));
-					counter += 1;
-				}
-				return result;
-			}
 
             window.onload = () => {
-                const form = document.getElementById("expense") as HTMLFormElement;
+                const form = document.getElementById("expense");
 
                 form.addEventListener('submit',	handleSubmit);
 
@@ -139,7 +124,7 @@ const categories = await client.db.categories.getAll();
                         dataObj[key] = value;
                     });
 
-                    var select = document.getElementById("select") as HTMLSelectElement;
+                    var select = document.getElementById("select");
                     if (select.value == "outro") {
                         outraCategoria = dataObj['outro'];
                     } else {

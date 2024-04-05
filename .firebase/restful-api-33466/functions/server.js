@@ -1,4 +1,4 @@
-const { onRequest } = require('firebase-functions/v2/https');
+import { onRequest } from 'firebase-functions/v2/https';
   const server = import('firebase-frameworks');
-  exports.ssrrestfulapi33466 = onRequest({"region":"us-east1"}, (req, res) => server.then(it => it.handle(req, res)));
+  export const ssrrestfulapi33466 = onRequest({"region":"us-east1"}, (req, res) => server.then(it => it.handle(req, res)));
   
