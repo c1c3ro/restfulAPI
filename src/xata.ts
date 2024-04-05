@@ -10,9 +10,14 @@ const tables = [
   {
     name: "expense",
     columns: [
-      { name: "category", type: "string" },
       { name: "price", type: "float", notNull: true, defaultValue: "1" },
+      { name: "category", type: "link", link: { table: "categories" } },
     ],
+  },
+  {
+    name: "categories",
+    columns: [{ name: "category", type: "string", unique: true }],
+    revLinks: [{ column: "category", table: "expense" }],
   },
 ] as const;
 
@@ -22,8 +27,12 @@ export type InferredTypes = SchemaInference<SchemaTables>;
 export type Expense = InferredTypes["expense"];
 export type ExpenseRecord = Expense & XataRecord;
 
+export type Categories = InferredTypes["categories"];
+export type CategoriesRecord = Categories & XataRecord;
+
 export type DatabaseSchema = {
   expense: ExpenseRecord;
+  categories: CategoriesRecord;
 };
 
 const DatabaseClient = buildClient();

@@ -1,0 +1,19 @@
+{
+  "id": "mig_co7hnb6pe2mbada2vk60",
+  "parentID": "mig_co7hn4mpe2mbada2vk50",
+  "checksum": "1:c50ab0ca5f78a4ab265458902164ca2256cb3f6e09b7febae5d447d58740f791",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "category",
+          "type": "link",
+          "link": {
+            "table": "categories"
+          }
+        },
+        "table": "expense"
+      }
+    }
+  ]
+}

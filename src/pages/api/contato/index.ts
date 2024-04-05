@@ -30,31 +30,35 @@ export const POST: APIRoute = async ({ request }) => {
       try {
 
           const body = await request.json();
-          const dataAtual = new Date();
-          const dataHora = dataAtual.toLocaleString('pt-BR');
-          // const createdCourse = await client.db["contato-inicial"].create(body);
+          const categories = await client.db.categories.getAll();
+          var id = '';
 
-          const db = getFirestore(app);
-          const friendsRef = db.collection("contato");
-          await friendsRef.add({dataHora, ...body});
-
-          return new Response(JSON.stringify({message: "success I guess"}), {
-              status: 200,
-              headers: {
-                "Content-Type": "application/json",
-                "Access-Control-Allow-Origin": "https://nad-edu-git-urgencia-novo-nads-projects-178161a5.vercel.app/"
+          if (!body.outraCategoria.length){
+            
+            categories.forEach((value, key)=>{
+              if (value.category == body.selectedText){
+                id = value.id;
               }
-            });
+            })
+
+          } else {
+
+            const createdCategory = await client.db.categories.create({category: body.outraCategoria});
+            id = createdCategory.id;
+
+          }
+
+          const createdInform = await client.db.expense.create({category: id, price: parseFloat(body.price)});
+
+          return new Response(JSON.stringify({message: "success", createdObj: createdInform}), {
+              status: 200,
+          });
 
       } catch (error) {
           console.log(error)
-          return new Response(JSON.stringify({msg: "ERROR"}), {
+          return new Response(JSON.stringify({message: "ERROR"}), {
               status: 400,
-              headers: {
-                "Content-Type": "application/json",
-                "Access-Control-Allow-Origin": "*"
-              }
-            });
+          });
       }
     }
   }
